@@ -1,0 +1,12 @@
+[project]
+name = "django-mosh"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.2.8",
+    "django-debug-toolbar>=6.1.0",
+    "dotenv>=0.9.9",
+    "pymysql>=1.1.2",
+]
