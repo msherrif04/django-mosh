@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.contrib.contenttypes.models import ContentType
-from store.models import Collection, Product
-from tags.models import TaggedItem
+from django.db import transaction
+from store.models import Order
 
 
 # from django.http import HttpResponse
@@ -9,13 +8,12 @@ from tags.models import TaggedItem
 
 # Create your views here.
 def say_hello(request):
-    collection = Collection()
-    collection.title = "Video Games"
-    collection.featured_product = Product(pk=1)
-    collection.featured_product_id = 1
+    with transaction.atomic():
+        order = Order()
+        order.save()
 
     return render(
         request,
         "hello.html",
-        context={"name": "Frontera", "tags": tags},
+        context={"name": "Frontera"},
     )
